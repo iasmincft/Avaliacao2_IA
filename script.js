@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatBox = document.getElementById('chatBox');
     const userInput = document.getElementById('userInput');
     const sendButton = document.getElementById('sendButton');
-    const clearButton = document.getElementById('clearChat');
-
 
     let messages = [];
 
@@ -30,13 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     sendButton.addEventListener('click', sendMessage);
 
-
-    clearButton.addEventListener('click', () => {
-        localStorage.removeItem('chatHistory');
-        chatBox.innerHTML = '';
-        messages = [];
-        addBotMessage("Olá, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?");
-    });
 
     function sendMessage() {
         const message = userInput.value.trim();
