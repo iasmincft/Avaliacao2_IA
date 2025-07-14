@@ -1,0 +1,20 @@
+{
+    "conversas": [
+        {
+            "mensagens": ["oi", "olá", "oi, tudo bem?", "como vai?", "olá, como vai?"],
+            "resposta": "Olá, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?"
+        },
+        {
+            "mensagens": ["Bom dia", "Oi, bom dia", "Olá, bom dia"],
+            "resposta": "Bom dia, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?"
+        },
+        {
+            "mensagens": ["Boa tarde", "Oi, boa tarde", "Olá, boa tarde"],
+            "resposta": "Boa tarde, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?"
+        },
+        {
+            "mensagens": ["Boa noite", "Oi, boa noite", "Olá, boa noite"],
+            "resposta": "Boa noite, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?"
+        }
+    ]
+}

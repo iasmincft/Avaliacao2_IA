@@ -1,0 +1,49 @@
+{
+    "conversas": [
+        {
+            "mensagens": [
+                "Onde acontecerá o evento?",
+                "Qual o local do evento?",
+                "Onde será o evento?",
+                "O evento será aonde?"
+            ],
+            "resposta": "O Arraia da Conquista acontecerá no parque de exposições"
+        },
+        {
+            "mensagens": [
+                "Quantos dias de evento?",
+                "Quais dias será o evento?",
+                "Quando acontecerá o evento?",
+                "Quais os dias do Arraiá da Conquista?"
+            ],
+            "resposta": "O evento acontecerá entre os dias 20 e 24 de junho."
+        },
+        {
+            "mensagens": [
+                "Qual a programação do evento?",
+                "O que acontecerá no evento?",
+                "Quais as areas do evento?",
+                "O que terá no Arraiá da Conquista?"
+            ],
+            "resposta": "O evento contará com um palco principal, a Vila Junina com mais atrações e area de alimentação com comidas e bebidas típicas."
+        },
+        {
+            "mensagens": [
+                "Qual o valor do ingresso?",
+                "O evento é gratuito?",
+                "O evento é pago?",
+                "Tem que pagar ingresso para entrar no evento?"
+            ],
+            "resposta": "O evento é gratuito, mas também contará com camarote com entrada exclusiva, área coberta, frontstage, banheiros, espaços instagramáveis, praça de alimentação e espaço relax."
+        },
+        {
+            "mensagens": [
+                "Quais as atrações confirmadas no evento?",
+                "Quais os shows do evento?",
+                "Quais shows acontecem em cada dia?",
+                "Qual a lineup do evento?"
+            ],
+            "resposta": "No dia 20 sobe ao palco Marquinhos Café, Erlan Forozão, Heitor Costa, Geraldo Cardoso e João Gomes. No dia 21, Ito Moreno, Trio da Huana, Mastruz com Leite, Lauana Prado e Liv Moraes. No dia 22 se apresentam Rege de Anagé, Kart Love, Rony Barbosa, Forró Temperado e Tiago Aquino. No dia 23 tem Jobim Araújo, Jô Almeida, Túlio Milhonário, Larissa Gomes e Marcinho Sensação. E no dia 24 sobem ao palco Beijo Apimentado, robertinha, mestrinho, Kevy Jonny e Mão Branca. Além disso no va vila junina os 5 dias de evento serão recheados de diversas outras atrações."
+        }
+    ]
+}
