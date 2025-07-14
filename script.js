@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const clearButton = document.getElementById('clearChat');
 
 
-    let messages = JSON.parse(localStorage.getItem('chatHistory')) || [];
+    let messages = [];
 
 
     messages.forEach(msg => {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatBox.scrollTop = chatBox.scrollHeight;
 
         messages.push({ sender: 'user', text: message });
-        localStorage.setItem('chatHistory', JSON.stringify(messages));
+
     }
 
     function addBotMessage(message) {
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatBox.scrollTop = chatBox.scrollHeight;
 
         messages.push({ sender: 'bot', text: message });
-        localStorage.setItem('chatHistory', JSON.stringify(messages));
+
     }
 
     function addTypingIndicator() {
