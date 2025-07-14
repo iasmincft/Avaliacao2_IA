@@ -7,7 +7,6 @@
 
 O SJBot é um robô de atendimento (chatbot) desenvolvido como forma de avaliação da disciplina de Inteligência Artificial do curso de sistemas de Informação do IFBA, em que ele fornece informações rápidas e precisas sobre o "Arraiá da Conquista", um evento sediado em Vitória da Conquista, Bahia. O bot é construído utilizando a biblioteca `ChatterBot` em Python e expõe suas funcionalidades através de uma interface web responsiva, desenvolvida com `Flask` no backend e HTML, CSS e JavaScript no frontend.
 
-O objetivo do SJBot é auxiliar os participantes do evento a obterem informações essenciais, como local, datas, programação, atrações e valor de ingresso, de forma intuitiva e acessível.
 
 ## Funcionalidades
 
@@ -15,11 +14,7 @@ O objetivo do SJBot é auxiliar os participantes do evento a obterem informaçõ
 
 * **Interface Web:** Acesso ao chatbot via navegador web, com um design simples e intuitivo.
 
-* **Persistência de Conversa:** O histórico da conversa é salvo localmente no navegador (`localStorage`).
-
 * **Treinamento Personalizado:** O bot é treinado com um conjunto de dados JSON específico sobre o evento.
-
-* **Indicador de Digitação:** Exibe "Digitando..." para uma melhor experiência do usuário enquanto aguarda a resposta do bot.
 
 ## Tecnologias Utilizadas
 
@@ -33,19 +28,29 @@ O objetivo do SJBot é auxiliar os participantes do evento a obterem informaçõ
 
   * ChatterBot Corpus (Dependência do ChatterBot, mesmo usando corpora personalizados)
 
-  * SQLAlchemy (Para o adaptador de armazenamento do ChatterBot)
-
 * **Frontend:**
 
   * HTML5
 
   * CSS3
 
-  * JavaScript (ES6+)
+  * JavaScript
 
 ## Estrutura do Projeto
 
-.├── conversas/│   ├── informacoes_basicas.json│   └── saudacoes.json├── data/│   └── db.sqlite3  (Gerado após o treinamento do bot)├── index.html├── script.js├── servico.py├── style.css├── testes.py├── treinamento.py├── robo.py└── requirements.txt
+.├── conversas/
+ │   ├── informacoes_basicas.json
+ │   └── saudacoes.json
+ ├── db.sqlite3  (Gerado após o treinamento do bot)
+ ├── index.html
+ ├── script.js
+ ├── servico.py
+ ├── style.css
+ ├── testes.py
+ ├── treinamento.py
+ ├── robo.py
+ └── requirements.txt
+
 * `conversas/`: Contém os arquivos JSON com os dados de treinamento para o chatbot.
 
 * `data/`: Diretório para o arquivo de banco de dados SQLite do ChatterBot.
@@ -108,7 +113,6 @@ Após a ativação, você verá `(venv)` no início da linha de comando.
 Com o ambiente virtual ativado, instale as bibliotecas necessárias usando o `requirements.txt`:
 
 pip install -r requirements.txt
-**Nota:** Caso encontre erros de compatibilidade do `chatterbot` com sua versão do Python (por exemplo, `Requires-Python <=3.8`), certifique-se de que seu `requirements.txt` especifica `chatterbot==1.2.7` ou uma versão mais recente compatível com seu Python (o erro deve indicar as versões compatíveis). Se você seguiu as sugestões de usar `database_uri` no `robo.py` e `treinamento.py`, certifique-se de que `SQLAlchemy==1.4.49` (ou uma versão compatível) também esteja no seu `requirements.txt`.
 
 ### 4. Treinar o Chatbot
 
@@ -117,7 +121,7 @@ Antes de executar o serviço, você precisa treinar o chatbot para que ele apren
 Com o ambiente virtual ativado:
 
 python treinamento.py
-Este processo pode levar alguns segundos, dependendo do volume de dados. Ele criará (ou atualizará) o arquivo `db.sqlite3` dentro da pasta `data/`.
+Este processo pode levar alguns segundos, dependendo do volume de dados. Ele criará (ou atualizará) o arquivo `db.sqlite3`
 
 ### 5. Iniciar o Serviço Web (API)
 
@@ -126,22 +130,15 @@ Após o treinamento, inicie o servidor Flask que irá expor a API do chatbot:
 Com o ambiente virtual ativado:
 
 python servico.py
-Você verá uma mensagem no terminal indicando que o serviço está rodando, geralmente em `http://0.0.0.0:6000/` ou `http://127.0.0.1:6000/`.
+Você verá uma mensagem no terminal indicando que o serviço está rodando, geralmente em `http://0.0.0.0:5000/` ou `http://127.0.0.1:5000/`.
 
 ### 6. Acessar a Interface Web
 
 Abra seu navegador de preferência e acesse a URL:
 
-http://localhost:6000
+http://localhost:5000
 Você deverá ver a interface do SJBot. Digite suas perguntas na caixa de texto e pressione Enter ou clique em "Enviar" para interagir com o bot.
 
-### Testando a API diretamente (opcional)
-
-Você pode testar os endpoints da API diretamente no navegador ou usando ferramentas como `curl` ou Postman:
-
-* **Informações do serviço:** `http://localhost:6000/`
-
-* **Obter resposta do bot (exemplo):** `http://localhost:6000/resposta/ola`
 
 ## Executando os Testes
 
@@ -150,10 +147,4 @@ Para garantir que o bot está respondendo corretamente às perguntas esperadas, 
 Com o ambiente virtual ativado:
 
 python testes.py
-## Contribuição
 
-Contribuições são bem-vindas! Se você tiver sugestões para melhorar o bot, adicionar mais dados de treinamento ou aprimorar a interface, sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a [Nome da Licença, ex: Licença MIT]. (Você pode adicionar um arquivo `LICENSE` no projeto).
