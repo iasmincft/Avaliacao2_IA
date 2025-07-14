@@ -7,7 +7,6 @@
 
 O SJBot é um robô de atendimento (chatbot) desenvolvido como forma de avaliação da disciplina de Inteligência Artificial do curso de sistemas de Informação do IFBA, em que ele fornece informações rápidas e precisas sobre o "Arraiá da Conquista", um evento sediado em Vitória da Conquista, Bahia. O bot é construído utilizando a biblioteca `ChatterBot` em Python e expõe suas funcionalidades através de uma interface web responsiva, desenvolvida com `Flask` no backend e HTML, CSS e JavaScript no frontend.
 
-
 ## Funcionalidades
 
 * **Chatbot Interativo:** Responde a perguntas sobre o Arraiá da Conquista.
