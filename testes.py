@@ -32,6 +32,7 @@ class TesteSaudacoes(unittest.TestCase):
 
 class TesteInformacoesBasicas(unittest.TestCase):
 
+
     @classmethod
     def setUpClass(self):
         self.inicializado, self.robo = inicializar()
@@ -41,23 +42,34 @@ class TesteInformacoesBasicas(unittest.TestCase):
 
     def testar_01_localizacao(self):
 
-        mensagens = [ "onde o ifba está localizado?", "onde vocês estão localizados?", "onde vocês funcionam?" ]
+        mensagens = [ 
+            "Onde acontecerá o evento?",
+            "Qual o local do evento?",
+            "Onde será o evento?",
+            "O evento será aonde?"
+            ]
 
         for mensagem in mensagens:
             print(f"testando: {mensagem}")
 
             resposta = self.robo.get_response(mensagem)
             self.assertGreaterEqual(resposta.confidence, CONFIANCA_MINIMA)
-            self.assertIn("o ifba fica localizado na avenida sérgio vieira de mello", resposta.text.lower())
+            self.assertIn("O Arraia da Conquista acontecerá no parque de exposições", resposta.text.lower())
 
-    def testar_02_horarios_de_funcionamento(self):
-        mensagens = [ "qual é o horário de funcionamento?", "que horas o ifba fica aberto?", "que horas o ifba funciona?" ]
+    def testar_02_dia_de_evento(self):
+        mensagens = [
+                "Quantos dias de evento?",
+                "Quais dias será o evento?",
+                "Quando acontecerá o evento?",
+                "Quais os dias do Arraiá da Conquista?"
+            ]
 
         for mensagem in mensagens:
             print(f"testando: {mensagem}")
 
             resposta = self.robo.get_response(mensagem)
-            self.assertGreaterEqual(resposta.confidence, CONFIANCA_MINIMA)          
+            self.assertGreaterEqual(resposta.confidence, CONFIANCA_MINIMA)
+            self.assertIn("O evento acontecerá entre os dias 20 e 24 de junho.", resposta.text.lower())          
 
 class TesteSistemasDeInformacao(unittest.TestCase):
 
