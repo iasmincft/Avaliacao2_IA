@@ -1,36 +1,59 @@
 from robo import inicializar, get_resposta as get_resposta_robo, NOME_ROBO
-from flask import Flask, Response
+from flask import Flask, Response, send_from_directory
 
 import json
+import logging
+import os
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 servico = Flask(NOME_ROBO)
 inicializado, robo = inicializar()
 
-@servico.get("/")
-def get_info():
-    info = {
-        "descrição": "Robô de atendimento do Arraia da Conquista",
-        "email": "seu_email@email.com",
-        "versão": "1.0"
-    }
+if not inicializado:
+    logging.error("Não foi possível inicializar o SJBot. O serviço não funcionará corretamente.")
 
-    return Response(json.dumps(info), status=200, mimetype="application/json")
+@servico.get("/")
+def serve_index():
+    
+    logging.info("Servindo index.html")
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'index.html')
 
 @servico.get("/resposta/<string:mensagem>")
 def get_resposta(mensagem):
-    resposta, confianca = get_resposta_robo(robo, mensagem)
 
-    resposta = {
-        "resposta": resposta,
-        "confianca": confianca
-    }
+    if not inicializado:
+        logging.error("Tentativa de uso do robô não inicializado.")
+        return Response(json.dumps({"erro": "Robô não inicializado"}), status=500, mimetype="application/json")
 
-    return Response(json.dumps(resposta), status=200, mimetype="application/json")
+    try:
+        resposta_texto, confianca = get_resposta_robo(robo, mensagem)
+        resposta_json = {
+            "resposta": resposta_texto,
+            "confianca": confianca
+        }
+        logging.info(f"Resposta para '{mensagem}': '{resposta_texto}' (Confiança: {confianca})")
+        return Response(json.dumps(resposta_json), status=200, mimetype="application/json")
+    except Exception as e:
+        logging.exception(f"Erro ao obter resposta para a mensagem '{mensagem}':")
+        return Response(json.dumps({"erro": "Erro interno ao processar a mensagem"}), status=500, mimetype="application/json")
 
+@servico.get("/style.css")
+def serve_css():
+    
+    logging.info("Servindo style.css")
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'style.css')
+
+@servico.get("/script.js")
+def serve_js():
+    
+    logging.info("Servindo script.js")
+    return send_from_directory(os.path.dirname(os.path.abspath(__file__)), 'script.js')
 
 if __name__ == "__main__":
     if inicializado:
-        servico.run(host="0.0.0.0", port=6000, debug=True)
+        
+        logging.info("Iniciando serviço SJBot na porta 5000...")
+        servico.run(host="0.0.0.0", port=5000, debug=True)
     else:
-        print("não foi possível inicializar o SJBot")
-
+        logging.critical("Serviço SJBot não pode ser iniciado devido à falha de inicialização do robô.")

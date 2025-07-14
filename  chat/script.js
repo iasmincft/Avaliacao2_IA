@@ -45,20 +45,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const typingIndicator = addTypingIndicator();
 
-        fetch('http://localhost:6000/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: message }),
-        })
-            .then(response => response.json())
-            .then(data => {
+        fetch(`http://localhost:5000/resposta/${encodeURIComponent(message)}`)
+            .then(response => {
                 chatBox.removeChild(typingIndicator);
-                addBotMessage(data.response);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.confianca >= MIN_CONFIDENCE) {
+                    addBotMessage(data.resposta);
+                } else {
+                    addBotMessage("Ainda não sei responder esta pergunta. Tente novamente ou veja se encontra essas informações nas nossas redes sociais.");
+                }
             })
             .catch(error => {
-                console.error('Erro:', error);
+                console.error('Erro na requisição fetch:', error);
                 chatBox.removeChild(typingIndicator);
                 addBotMessage("Desculpe, estou tendo problemas para me conectar. Tente novamente mais tarde.");
             });
