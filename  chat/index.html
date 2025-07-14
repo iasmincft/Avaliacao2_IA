@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SJBot - Robô de atendimento do Arraia da Conquista</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="chat-container">
+        <header>
+            <h1>SJBot</h1>
+            <p>Seu assistente virtual para dúvidas sobre o Arraia da Conquista.</p>
+        </header>
+        
+        <div class="chat-box" id="chatBox">
+            
+        </div>
+        
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Digite sua dúvida sobre o evento..." autofocus>
+            <button id="sendButton">Enviar</button>
+            <button id="clearChat">Limpar conversa</button>
+        </div>
+    </div>
     
+    <script src="script.js"></script>
 </body>
 </html>

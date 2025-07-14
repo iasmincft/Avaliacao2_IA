@@ -2,13 +2,13 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
 import json
+import os
 
-NOME_ROBO = "IFBABot"
+NOME_ROBO = "SJBot"
 
 CONVERSAS = [
-    "/misc/ifba/workspaces/inteligencia artificial/ifbabot/conversas/sistemas_de_informacao.json", 
-    "/misc/ifba/workspaces/inteligencia artificial/ifbabot/conversas/saudacoes.json", 
-    "/misc/ifba/workspaces/inteligencia artificial/ifbabot/conversas/informacoes_basicas.json"
+    "conversas/saudacoes.json",
+    "conversas/informacoes_basicas.json",
 ]
 
 def inicializar():
@@ -32,8 +32,6 @@ def carregar_conversas():
             with open(arquivo_conversas, "r", encoding="utf-8") as arquivo:
                 conversas_para_treinamento = json.load(arquivo)
                 conversas.append(conversas_para_treinamento["conversas"])
-
-                arquivo.close()
 
 
         carregadas = True

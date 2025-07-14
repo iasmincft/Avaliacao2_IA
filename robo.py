@@ -1,4 +1,5 @@
 from chatterbot import ChatBot
+from chatterbot.logic import BestMatch
 
 NOME_ROBO = "SJBot"
 CONFIANCA_MINIMA = 0.65
@@ -8,7 +9,10 @@ def inicializar():
 
     try:
         robo = ChatBot(NOME_ROBO, read_only=True, logic_adapters=[{
-            "import_path": "chatterbot.logic.BestMatch"
+            "import_path": "chatterbot.logic.BestMatch",
+            "statement_comparison_function": "chatterbot.comparisons.JaccardSimilarity",
+            "response_selection_method": "chatterbot.response_selection.get_first_response"
+                
         }])
 
         inicializado = True
@@ -21,22 +25,3 @@ def get_resposta(robo, mensagem):
     resposta = robo.get_response(mensagem.lower())
 
     return resposta.text, resposta.confidence
-
-
-def executar_robo(robo):
-    print(f"Olá, sou o SJBot, robô de atendimento do Arraia da Conquista. Gostaria de saber alguma informação sobre o evento?")
-
-    while True:
-        mensagem = input(" ")
-        resposta, confianca = get_resposta(robo, mensagem)
-
-        if confianca >= CONFIANCA_MINIMA:
-            print(f" {resposta} [confiança: {confianca}]")
-        else:
-            print(f"Ainda não sei responder esta pergunta. Tente novamente ou veja se encontra essas informações nas nossas redes sociais [confiança: {confianca}]")
-
-
-if __name__ == "__main__":
-    inicializado, robo = inicializar()
-    if inicializado:
-        executar_robo(robo)

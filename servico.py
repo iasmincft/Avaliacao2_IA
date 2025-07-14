@@ -10,7 +10,7 @@ inicializado, robo = inicializar()
 def get_info():
     info = {
         "descrição": "Robô de atendimento do Arraia da Conquista",
-        "email": "xxxxxxx@gmail.com",
+        "email": "seu_email@email.com",
         "versão": "1.0"
     }
 
