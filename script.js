@@ -1,3 +1,5 @@
+const MIN_CONFIDENCE = 0.65;
+
 document.addEventListener('DOMContentLoaded', function () {
     const chatBox = document.getElementById('chatBox');
     const userInput = document.getElementById('userInput');

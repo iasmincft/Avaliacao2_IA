@@ -1,3 +1,4 @@
 chatterbot
 chatterbot-corpus
 Flask
+Flask-Cors
